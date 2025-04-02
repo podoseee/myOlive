@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="config/connection-config.properties"/>
+
+    <typeAliases>
+        <!-- Login -->
+        <typeAlias alias="Login" type="com.minisec.common.login.Login"/>
+
+    </typeAliases>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- DB Connect Check -->
+        <mapper resource="mapper/healthcheck-mapper.xml"/>
+        <!-- Login -->
+        <mapper resource="mapper/login-mapper.xml"/>
+
+    </mappers>
+</configuration>
